@@ -15,8 +15,8 @@ public class AesEncryptionTest {
         String secretKey = "secret";
         String tokenIdentifier = "TokenId";
 
-        byte[] encryptedData = AesEncryption.encrypt(plainText.getBytes(), secretKey, tokenIdentifier);
-        byte[] decryptedData = AesEncryption.decrypt(encryptedData, secretKey, tokenIdentifier);
+        byte[] encryptedData = AesEncryption.Encrypt(plainText.getBytes(), secretKey, tokenIdentifier);
+        byte[] decryptedData = AesEncryption.Decrypt(encryptedData, secretKey, tokenIdentifier);
         String actualDecryptedText = new String(decryptedData);
         assertEquals(plainText, actualDecryptedText);
     }
@@ -28,10 +28,10 @@ public class AesEncryptionTest {
         String plainText = "My Random Text";
         String secretKeyForEncryption = "secret";
         String tokenIdentifier = "TokenId";
-        byte[] encryptedData = AesEncryption.encrypt(plainText.getBytes(), secretKeyForEncryption, tokenIdentifier);
+        byte[] encryptedData = AesEncryption.Encrypt(plainText.getBytes(), secretKeyForEncryption, tokenIdentifier);
 
         // Act
-        AesEncryption.decrypt(encryptedData, "AnotherSecret", tokenIdentifier);
+        AesEncryption.Decrypt(encryptedData, "AnotherSecret", tokenIdentifier);
     }
 
     @Test(expected = TokenSerializationException.class)
@@ -41,10 +41,10 @@ public class AesEncryptionTest {
         String plainText = "My Random Text";
         String secretKey = "secret";
         String tokenIdentifierForEncryption = "TokenId";
-        byte[] encryptedData = AesEncryption.encrypt(plainText.getBytes(), secretKey, tokenIdentifierForEncryption);
+        byte[] encryptedData = AesEncryption.Encrypt(plainText.getBytes(), secretKey, tokenIdentifierForEncryption);
 
         // Act
-        AesEncryption.decrypt(encryptedData, secretKey, "AnotherTokenId");
+        AesEncryption.Decrypt(encryptedData, secretKey, "AnotherTokenId");
     }
 
     @Test
@@ -54,7 +54,7 @@ public class AesEncryptionTest {
         String secretKey = "secret";
         String tokenIdentifier = "TokenId";
 
-        byte[] encryptedData = AesEncryption.encrypt(plainText.getBytes(), secretKey, tokenIdentifier);
+        byte[] encryptedData = AesEncryption.Encrypt(plainText.getBytes(), secretKey, tokenIdentifier);
 
         assertNotNull(encryptedData);
     }
@@ -66,7 +66,7 @@ public class AesEncryptionTest {
         String secretKey = "secret";
         String tokenIdentifier = "";
 
-        byte[] encryptedData = AesEncryption.encrypt(plainText.getBytes(), secretKey, tokenIdentifier);
+        byte[] encryptedData = AesEncryption.Encrypt(plainText.getBytes(), secretKey, tokenIdentifier);
 
         assertNotNull(encryptedData);
     }
@@ -77,7 +77,7 @@ public class AesEncryptionTest {
         String plainText = "My Random Text";
         String secretKey = "secret";
 
-        AesEncryption.encrypt(plainText.getBytes(), secretKey, null);
+        AesEncryption.Encrypt(plainText.getBytes(), secretKey, null);
     }
 
     @Test
@@ -89,7 +89,7 @@ public class AesEncryptionTest {
         String tokenIdentifier = "TokenId";
 
         // Act
-        AesEncryption.encrypt(plainText.getBytes(), secretKey, tokenIdentifier);
+        AesEncryption.Encrypt(plainText.getBytes(), secretKey, tokenIdentifier);
     }
 
     @Test(expected = TokenSerializationException.class)
@@ -100,6 +100,6 @@ public class AesEncryptionTest {
         String tokenIdentifier = "TokenId";
 
         // Act
-        AesEncryption.encrypt(null, secretKey, tokenIdentifier);
+        AesEncryption.Encrypt(null, secretKey, tokenIdentifier);
     }
 }
