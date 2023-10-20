@@ -1,6 +1,6 @@
 package com.queue_it.queuetoken;
 
-import javax.xml.bind.DatatypeConverter;
+import jakarta.xml.bind.DatatypeConverter;
 
 class Base64UrlEncoder {
     public static String encode(byte[] input) {
